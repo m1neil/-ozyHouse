@@ -56,6 +56,7 @@ $mobileSmall: toEm(479.98);
 	--header-height: clamp(7.5rem, 1.128rem + 13.27vw, 11.25rem);
 }
 
+@import "base/slider";
 @import "common";
 @import "header";
 @import "footer";
