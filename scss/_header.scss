@@ -4,6 +4,23 @@
 	left: 0;
 	width: 100%;
 	z-index: 50;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+		transition:
+			background-color 0.4s,
+			backdrop-filter 0.4s;
+	}
+	&.--fixed::before {
+		background-color: rgba(84, 71, 65, 0.6);
+		backdrop-filter: blur(toRem(10));
+	}
+
 	// .header__container
 	&__container {
 		display: flex;
@@ -12,6 +29,11 @@
 		column-gap: toRem(20);
 		min-height: var(--header-height);
 		padding-block: toRem(15);
+		transition: min-height 0.3s;
+		.--fixed & {
+			min-height: toRem(70);
+			transition: min-height 0.4s;
+		}
 	}
 	// .header__block
 	&__block {

@@ -6,6 +6,9 @@
 	&--main {
 		font-size: toRem(44);
 		color: #fff;
+		@media (max-width: $mobile) {
+			font-size: toRem(35);
+		}
 	}
 	@media (max-width: toEm(565)) {
 		font-size: toRem(25);
@@ -25,7 +28,7 @@
 
 .button {
 	text-align: center;
-	display: inline-flex;
+	display: inline-block;
 	border-radius: toRem(100);
 	background-color: #f1cdb3;
 	padding: toRem(15) toRem(45);
