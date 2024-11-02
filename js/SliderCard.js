@@ -12,8 +12,6 @@ export class SliderCard {
 		this.Gap = gap
 		this.AmountSlide = amountSlide
 		this.SpeedAnimation = speedAnimation
-		this.init()
-		this.initMediaQueries()
 	}
 
 	// get set ===========================================================================
@@ -157,5 +155,11 @@ export class SliderCard {
 		this.buttonNext = this.findElement(`${this.selector} .swiper-button-next`)
 		this.buttonNext.addEventListener('click', this.moveSlide.bind(this, 1))
 		this.buttonPrev.addEventListener('click', this.moveSlide.bind(this, -1))
+	}
+
+
+	render() {
+		this.init()
+		this.initMediaQueries()
 	}
 }

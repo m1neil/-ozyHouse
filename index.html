@@ -8,10 +8,10 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<header data-header-fixed="10" class="header">
+			<header data-goto-parent data-scroll-height="83" data-header-fixed="10" class="header">
 				<div class="header__container">
 					<div class="header__block">
-						<a href="#" class="header__logo">
+						<a data-goto=".page" href="#" class="header__logo">
 							<img src="img/logo.svg" alt="Cozy House">
 						</a>
 						<div class="header__sub-logo">Shelter for pets in Boston</div>
@@ -20,16 +20,16 @@
 						<nav class="menu__body">
 							<ul class="menu__list">
 								<li class="menu__item">
-									<a href="#" class="menu__link">About the shelter</a>
+									<a data-goto=".about-pets" href="#" class="menu__link">About the shelter</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Our pets</a>
+									<a data-goto=".pets" href="#" class="menu__link">Our pets</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Help the shelter</a>
+									<a data-goto=".our-shelter" href="#" class="menu__link">Help the shelter</a>
 								</li>
 								<li class="menu__item">
-									<a href="#" class="menu__link">Contacts</a>
+									<a data-goto=".footer" href="#" class="menu__link">Contacts</a>
 								</li>
 							</ul>
 						</nav>

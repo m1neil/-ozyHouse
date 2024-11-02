@@ -17,5 +17,5 @@ export function initSliders() {
 		90,
 		600,
 		sliderMedia
-	)
+	).render()
 }

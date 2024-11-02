@@ -4,6 +4,7 @@ import { initFixedHeader } from './fixed-header.js'
 import { initSliders } from './sliders.js'
 import { HttpRequest } from './HttpRequest.js'
 import { initPhoneNumber } from './phoneNumber.js'
+import { initGoto } from './functions.js'
 
 window.addEventListener('load', windowLoaded)
 
@@ -11,6 +12,7 @@ function windowLoaded() {
 	initMenu(400)
 	initFixedHeader()
 	initPhoneNumber()
+	initGoto()
 	const slider = document.querySelector('.pets__slider')
 	if (slider) {
 		let amountCard = slider.hasAttribute('data-amount') ?
