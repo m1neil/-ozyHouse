@@ -15,6 +15,14 @@
 	&--col-white {
 		color: #fff;
 	}
+	&--mb {
+		&:not(:last-child) {
+			margin-bottom: toRem(60);
+			@media (max-width: $mobile) {
+				margin-bottom: toRem(42);
+			}
+		}
+	}
 	@media (max-width: toEm(565)) {
 		font-size: toRem(25);
 	}
@@ -66,5 +74,28 @@
 				border-color: #fddcc4;
 			}
 		}
+	}
+}
+//===========================================================================
+.message {
+	position: fixed;
+	top: toRem(17);
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100;
+	background-color: #fff;
+	padding: toRem(15) toRem(20);
+	border-radius: toRem(8);
+	animation:
+		show-message 0.6s forwards ease,
+		show-message 0.3s forwards ease alternate-reverse 2.5s;
+}
+
+@keyframes show-message {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

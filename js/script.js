@@ -3,20 +3,21 @@ import { initMenu } from './menu.js'
 import { initFixedHeader } from './fixed-header.js'
 import { initSliders } from './sliders.js'
 import { HttpRequest } from './HttpRequest.js'
+import { initPhoneNumber } from './phoneNumber.js'
 
 window.addEventListener('load', windowLoaded)
 
 function windowLoaded() {
 	initMenu(400)
 	initFixedHeader()
-
+	initPhoneNumber()
 	const slider = document.querySelector('.pets__slider')
 	if (slider) {
 		let amountCard = slider.hasAttribute('data-amount') ?
 			parseInt(slider.getAttribute('data-amount')) : 3
 
 		if (isNaN(amountCard) || amountCard <= 0)
-			amountCard = 6
+			throw new RangeError("The number should be more than zero!");
 
 		HttpRequest.getData(`https://dog.ceo/api/breed/hound/images/random/${amountCard}`)
 			.then(({ message }) => {

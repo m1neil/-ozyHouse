@@ -103,6 +103,7 @@ main {
 	}
 	// .about-pets__img
 	&__img {
+		align-self: flex-start;
 		aspect-ratio: 300 / 408;
 		img {
 			width: 100%;
@@ -159,9 +160,6 @@ main {
 	&__title {
 		max-width: toRem(420);
 		margin-inline: auto;
-		&:not(:last-child) {
-			margin-bottom: toRem(60);
-		}
 	}
 	// .pets__slider
 	&__slider {
@@ -242,12 +240,203 @@ main {
 	}
 	// .card-pet__title
 	&__title {
-		// flex-grow: 1;
 		font-size: toRem(20);
 		letter-spacing: toRem(1.2);
 		color: #545454;
 	}
 	// .card-pet__more
 	&__more {
+	}
+}
+
+//===========================================================================
+.our-shelter {
+	// .our-shelter__container
+	&__container {
+	}
+	// .our-shelter__title
+	&__title {
+		@media (max-width: toEm(420)) {
+			max-width: toRem(280);
+			margin-inline: auto;
+		}
+	}
+	// .our-shelter__items
+	&__items {
+		max-width: toRem(1026);
+		margin-inline: auto;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		row-gap: toRem(55);
+		column-gap: toRem(110);
+		@include adaptiveValue("column-gap", 110, 60, 0, 1026, 850);
+		@media (max-width: toEm(825)) {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(auto, toRem(170)));
+		}
+		@media (max-width: toEm(660)) {
+			column-gap: toRem(30);
+			row-gap: toRem(30);
+			grid-template-columns: repeat(2, minmax(auto, toRem(170)));
+		}
+		@media (max-width: $mobileSmall) {
+			grid-template-columns: repeat(2, minmax(auto, toRem(130)));
+		}
+	}
+	// .our-shelter__item
+	&__item {
+		text-align: center;
+		img {
+			width: toRem(60);
+			aspect-ratio: 1;
+			object-fit: contain;
+			&:not(:last-child) {
+				margin-bottom: toRem(30);
+			}
+		}
+	}
+	// .our-shelter__label
+	&__label {
+		color: #545454;
+		font-size: toRem(20);
+		line-height: 1.15;
+		letter-spacing: toRem(1.2);
+		@media (max-width: $mobileSmall) {
+			font-size: toRem(15);
+		}
+	}
+}
+
+//===========================================================================
+.donation {
+	background-color: #f6f6f6;
+	// .donation__container
+	&__container {
+	}
+	// .donation__body
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: toRem(30);
+		max-width: toRem(915);
+		margin-inline: auto;
+		@media (max-width: $mobile) {
+			flex-direction: column-reverse;
+			justify-content: flex-end;
+			row-gap: toRem(42);
+		}
+	}
+	// .donation__img
+	&__img {
+		aspect-ratio: 505 / 261;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		@media (min-width: $mobile) {
+			flex-basis: percent(505, 915);
+		}
+		@media (max-width: $mobile) {
+			max-width: toRem(505);
+		}
+	}
+	// .donation__content
+	&__content {
+		@media (min-width: $mobile) {
+			flex-basis: toRem(380);
+		}
+		& > *:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+		@media (max-width: $mobile) {
+			text-align: center;
+		}
+	}
+	// .donation__title
+	&__title {
+		@media (min-width: $mobile) {
+			max-width: toRem(300);
+		}
+	}
+	// .donation__subtitle
+	&__subtitle {
+		color: #545454;
+		line-height: 1.1;
+		letter-spacing: toRem(0.9);
+	}
+	// .donation__card
+	&__card {
+	}
+	// .donation__text
+	&__text {
+		color: var(--color-dark-m, #b2b2b2);
+		font-family: $fontSecond;
+		font-size: toRem(12);
+		font-style: italic;
+		line-height: 1.5;
+		p:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+		@media (max-width: $mobile) {
+			max-width: toRem(500);
+			margin-inline: auto;
+		}
+	}
+}
+
+.card-donation {
+	background-color: #f1cdb3;
+	border-radius: toRem(8);
+	padding-left: toRem(15);
+	display: inline-flex;
+	align-items: center;
+	column-gap: toRem(15);
+	overflow: hidden;
+	// .card-donation__icon
+	&__icon {
+		flex-shrink: 0;
+		width: toRem(30);
+		height: toRem(23);
+		object-fit: contain;
+	}
+	// .card-donation__number
+	&__number {
+		white-space: nowrap;
+		width: calc(100% + toRem(15));
+		text-align: left;
+		color: #545454;
+		font-size: toRem(20);
+		line-height: 1.15;
+		letter-spacing: toRem(1.2);
+		margin-left: toRem(-60);
+		padding-inline: toRem(60) toRem(15);
+		padding-block: toRem(10);
+		@media (any-hover: hover) {
+			&:hover {
+				span {
+					animation-name: up-symbol;
+					animation-duration: 0.3s;
+					animation-iteration-count: 1;
+				}
+			}
+		}
+		@media (max-width: $mobileSmall) {
+			font-size: toRem(15);
+			padding-block: toRem(13);
+			letter-spacing: toRem(0.9);
+		}
+	}
+}
+
+@keyframes up-symbol {
+	0%,
+	100% {
+		transform: translateY(toRem(0));
+	}
+	50% {
+		transform: translateY(toRem(-5));
 	}
 }

@@ -54,11 +54,13 @@ export class SliderCard {
 
 	moveSlide(value) {
 		if (this.isSlideAnimate) return
+
 		this.currentSlide += value
 		if (this.currentSlide < 0)
 			this.currentSlide = this.amountField - 1
 		else if (this.currentSlide >= this.amountField)
 			this.currentSlide = 0
+
 		this.scrollSlide()
 
 		this.isSlideAnimate = true
@@ -114,9 +116,8 @@ export class SliderCard {
 	addSlidesInField() {
 		const fields = this.wrapper.querySelectorAll('.swiper-field')
 		let slideField
-		if (fields.length) {
+		if (fields.length)
 			slideField = fields[this.currentSlide].children[0]
-		}
 
 		if (fields.length)
 			fields.forEach(field => field.remove())
@@ -124,7 +125,6 @@ export class SliderCard {
 		for (let indexField = 0, indexChild = 0; indexField < this.amountField; indexField++) {
 			const field = document.createElement('div')
 			field.className = 'swiper-field'
-			field.setAttribute('data-id', indexField)
 			field.style.gap = `${this.Gap}rem`
 			for (let iSlide = 0; iSlide < this.AmountSlide; iSlide++, indexChild++) {
 				if (this.children[indexChild] === slideField)
