@@ -15,6 +15,7 @@
 	transition:
 		opacity 0.4s,
 		visibility 0.4s;
+	overflow-y: auto;
 	.popup-open & {
 		opacity: 1;
 		visibility: visible;

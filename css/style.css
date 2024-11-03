@@ -370,6 +370,7 @@ body {
   visibility: hidden;
   -webkit-transition: opacity 0.4s, visibility 0.4s;
   transition: opacity 0.4s, visibility 0.4s;
+  overflow-y: auto;
 }
 .popup-open .popup {
   opacity: 1;

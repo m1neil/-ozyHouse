@@ -58,3 +58,22 @@ function scrollToBlock(e) {
 		e.preventDefault()
 	}
 }
+
+export function getScrollWidth() {
+	const element = document.createElement('div')
+	element.style.cssText = `
+		overflow-y: scroll;
+		position: fixed;
+		top: 0;
+		left: -500%;
+		width: 100px;
+		height: 100px;
+		opacity: 0;
+		visibility: hidden;
+	`
+
+	document.body.append(element)
+	const scrollWidth = element.offsetWidth - element.clientWidth
+	element.remove()
+	return scrollWidth
+}

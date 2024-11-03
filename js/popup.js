@@ -1,5 +1,5 @@
 import { HttpRequest } from "./HttpRequest.js"
-import { blockBody, unBlockBody } from "./functions.js"
+import { blockBody, unBlockBody, getScrollWidth } from "./functions.js"
 
 export function initPopup() {
 	const parent = document.querySelectorAll('[data-modal-parent]')
@@ -34,6 +34,9 @@ async function openModal(e) {
 
 	currentPopup.classList.add('--open')
 	if (!prevPopup) {
+		const scrollWidth = getScrollWidth()
+		document.body.style.paddingRight = `${scrollWidth}px`
+		togglePaddingFixedElement(scrollWidth)
 		document.documentElement.classList.add('popup-open')
 		document.addEventListener('click', closePopupByTrigger)
 		document.addEventListener('keydown', closePopupByTrigger)
@@ -99,6 +102,8 @@ function closePopup(popup, isHideBlackout = true) {
 	isAnimatingPopup = true
 	setTimeout(() => {
 		isAnimatingPopup = false
+		togglePaddingFixedElement()
+		document.body.style.removeProperty('padding-right')
 	}, 400);
 }
 
@@ -112,4 +117,14 @@ function closePopupByTrigger(event) {
 		const openPopup = document.querySelector('.content-popup.--open')
 		closePopup(openPopup)
 	}
+}
+
+
+function togglePaddingFixedElement(widthScroll) {
+	const fixedElements = document.querySelectorAll('[data-fixed]')
+	if (!fixedElements.length) return
+	if (widthScroll)
+		fixedElements.forEach(element => element.style.paddingRight = `${widthScroll}px`)
+	else
+		fixedElements.forEach(element => element.style.removeProperty('padding-right'))
 }
