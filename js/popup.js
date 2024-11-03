@@ -109,14 +109,33 @@ function closePopup(popup, isHideBlackout = true) {
 
 function closePopupByTrigger(event) {
 	if (isAnimatingPopup) return
+
+	if (event.type === 'keydown' && event.code === 'Tab') {
+		event.preventDefault()
+		const closeButton = document.querySelector('.content-popup.--open [data-modal-close]')
+		if (closeButton) closeButton.focus()
+	}
+
 	if (
-		event.type === 'keydown' && event.code === 'Escape' ||
-		event.type === 'click' && event.target.closest('[data-modal-close]') ||
-		event.type === 'click' && !event.target.closest('.content-popup')
+		event.type === 'keydown' && isTriggerKey(event.code) ||
+		event.type === 'click' &&
+		(event.target.closest('[data-modal-close]') || !event.target.closest('.content-popup'))
 	) {
 		const openPopup = document.querySelector('.content-popup.--open')
 		closePopup(openPopup)
 	}
+}
+
+function isTriggerKey(code) {
+	let isTrigger = false
+	switch (code.toLowerCase()) {
+		case 'escape':
+		case 'enter':
+		case 'space':
+			isTrigger = true
+			break
+	}
+	return isTrigger
 }
 
 

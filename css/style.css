@@ -515,8 +515,13 @@ body {
           align-items: center;
   border: 0.125rem solid #f1cdb3;
   border-radius: 50%;
-  -webkit-transition: background-color 0.4s;
-  transition: background-color 0.4s;
+  -webkit-transition: background-color 0.4s, outline-color 0.4s;
+  transition: background-color 0.4s, outline-color 0.4s;
+  outline: 0.125rem solid transparent;
+  outline-offset: 0.3125rem;
+}
+.content-popup__close:focus-visible, .content-popup__close:focus {
+  outline-color: orange;
 }
 .content-popup__close img {
   width: 0.75rem;

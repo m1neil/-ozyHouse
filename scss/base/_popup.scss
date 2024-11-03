@@ -132,7 +132,15 @@
 		align-items: center;
 		border: toRem(2) solid #f1cdb3;
 		border-radius: 50%;
-		transition: background-color 0.4s;
+		transition:
+			background-color 0.4s,
+			outline-color 0.4s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(5);
+		&:focus-visible,
+		&:focus {
+			outline-color: orange;
+		}
 		img {
 			width: toRem(12);
 			aspect-ratio: 1;
