@@ -54,6 +54,7 @@ $mobileSmall: toEm(479.98);
 
 :root {
 	--header-height: clamp(7.5rem, 1.128rem + 13.27vw, 11.25rem);
+	scroll-behavior: smooth;
 }
 
 @import "base/slider";

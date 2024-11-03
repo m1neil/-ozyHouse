@@ -5,6 +5,7 @@ import { initSliders } from './sliders.js'
 import { HttpRequest } from './HttpRequest.js'
 import { initPhoneNumber } from './phoneNumber.js'
 import { initGoto } from './functions.js'
+import { initPopup } from './popup.js'
 
 window.addEventListener('load', windowLoaded)
 
@@ -13,6 +14,7 @@ function windowLoaded() {
 	initFixedHeader()
 	initPhoneNumber()
 	initGoto()
+	initPopup()
 	const slider = document.querySelector('.pets__slider')
 	if (slider) {
 		let amountCard = slider.hasAttribute('data-amount') ?
@@ -68,6 +70,8 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 		button.type = 'button'
 		button.className = 'card-pet__more button button--border'
 		button.textContent = 'Learn more'
+		button.setAttribute('data-modal-link', '#popup')
+		button.setAttribute('aria-label', 'Open a modal window')
 		contentBody.append(button)
 		article.append(contentBody)
 

@@ -394,7 +394,6 @@ main {
 	display: inline-flex;
 	align-items: center;
 	column-gap: toRem(15);
-	overflow: hidden;
 	// .card-donation__icon
 	&__icon {
 		flex-shrink: 0;
@@ -404,6 +403,7 @@ main {
 	}
 	// .card-donation__number
 	&__number {
+		border-radius: toRem(8);
 		white-space: nowrap;
 		width: calc(100% + toRem(15));
 		text-align: left;

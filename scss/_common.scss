@@ -24,7 +24,9 @@
 		}
 	}
 	@media (max-width: toEm(565)) {
-		font-size: toRem(25);
+		&:not(.content-popup__title) {
+			font-size: toRem(25);
+		}
 	}
 }
 
@@ -99,3 +101,5 @@
 		opacity: 1;
 	}
 }
+
+@import "base/popup";
