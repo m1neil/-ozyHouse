@@ -23,7 +23,7 @@ function windowLoaded() {
 		if (isNaN(amountCard) || amountCard <= 0)
 			throw new RangeError("The number should be more than zero!");
 
-		HttpRequest.getData(`https://api.thecatapi.com/v1/images/search?limit=${amountCard}&breed_ids=beng`)
+		HttpRequest.getData(`https://api.thecatapi.com/v1/images/search?limit=${amountCard}&has_breeds=1&breed_ids=beng,abys`)
 			.then(data => {
 				const newData = Promise.all(data.map(({ id }) => {
 					const data = HttpRequest.getData(`https://api.thecatapi.com/v1/images/${id}`)
@@ -32,12 +32,15 @@ function windowLoaded() {
 				return newData
 			})
 			.then(data => {
+				const spinner = document.querySelector('.spinner')
+				if (spinner) spinner.remove()
 				console.log(data)
 				slider.prepend(getCardsList(data, 'pets', true))
 				initSliders()
 			})
 			.catch(error => {
-				console.error(error.message)
+				console.debug(error.message)
+				alert(`Reload the page! Click F5 on your keyboard.`)
 			})
 	}
 }
@@ -47,7 +50,7 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 	wrapper.className = bemClass ? `${bemClass}__wrapper swiper-wrapper` : 'swiper-wrapper'
 
 
-	images.forEach(({ id, url }) => {
+	images.forEach(({ id, url, breeds }) => {
 		const article = document.createElement('article')
 		article.className = "pets__card card-pet"
 
@@ -70,9 +73,10 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 		const contentBody = document.createElement('div')
 		contentBody.className = 'card-pet__body'
 
+		const namePet = breeds[0]?.name ?? 'unknown'
 		const title = document.createElement('h5')
 		title.className = 'card-pet__title'
-		title.textContent = 'Name pet'
+		title.textContent = namePet
 		contentBody.append(title)
 
 		const button = document.createElement('button')

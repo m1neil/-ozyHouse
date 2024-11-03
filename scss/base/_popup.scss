@@ -15,7 +15,7 @@
 	transition:
 		opacity 0.4s,
 		visibility 0.4s;
-	.--modal-open & {
+	.popup-open & {
 		opacity: 1;
 		visibility: visible;
 	}

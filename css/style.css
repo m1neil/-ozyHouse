@@ -371,7 +371,7 @@ body {
   -webkit-transition: opacity 0.4s, visibility 0.4s;
   transition: opacity 0.4s, visibility 0.4s;
 }
-.--modal-open .popup {
+.popup-open .popup {
   opacity: 1;
   visibility: visible;
 }
@@ -1242,6 +1242,24 @@ body {
 .pets__title {
   max-width: 26.25rem;
   margin-inline: auto;
+}
+.pets__slider:has(.spinner) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.pets__slider .spinner {
+  width: 6.25rem;
+  aspect-ratio: 1;
+}
+.pets__slider .spinner img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .pets__slider:not(:last-child) {
   margin-bottom: 3.75rem;

@@ -85,6 +85,9 @@
 							Our friends who are looking for a house
 						</h2>
 						<div data-modal-parent data-amount="9" class="pets__slider swiper">
+							<div class="spinner">
+								<img src="img/spinner.svg" aria-hidden="true" alt="Spinner loading...">
+							</div>
 							<div class="swiper-buttons">
 								<button aria-label="go to prev slide" type="button" class="swiper-button-prev">
 									<img src="img/icons/arrow-slide.svg" alt="Image">
@@ -209,8 +212,8 @@
 				</div>
 				<img aria-hidden="true" src="img/start-screen-background.webp" alt="background" class="footer__img-bg">
 			</footer>
-			<div id="popup" class="popup">
-				<div class="popup__content content-popup">
+			<div class="popup">
+				<div id="popup" class="popup__content content-popup">
 					<div class="content-popup__img">
 						<img src="img/pets/02.jpg" alt="#">
 					</div>
@@ -224,20 +227,20 @@
 						</div>
 						<ul class="content-popup__list list-popup">
 							<li class="list-popup__item">
-								<div class="list-popup__label">Age:</div>
-								<div class="list-popup__value">2 months</div>
+								<div class="list-popup__label">Life expectancy:</div>
+								<div data-label="expectancy" class="list-popup__value"></div>
 							</li>
 							<li class="list-popup__item">
-								<div class="list-popup__label">Inoculations:</div>
-								<div class="list-popup__value">none</div>
+								<div class="list-popup__label">Country of origin:</div>
+								<div data-label="origin" class="list-popup__value"></div>
 							</li>
 							<li class="list-popup__item">
-								<div class="list-popup__label">Diseases:</div>
-								<div class="list-popup__value">none</div>
+								<div class="list-popup__label">Social needs:</div>
+								<div data-label="social-needs" class="list-popup__value"></div>
 							</li>
 							<li class="list-popup__item">
-								<div class="list-popup__label">Parasites:</div>
-								<div class="list-popup__value">none</div>
+								<div class="list-popup__label">Adaptability:</div>
+								<div data-label="adaptability" class="list-popup__value"></div>
 							</li>
 						</ul>
 					</div>
