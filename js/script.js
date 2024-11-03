@@ -23,9 +23,17 @@ function windowLoaded() {
 		if (isNaN(amountCard) || amountCard <= 0)
 			throw new RangeError("The number should be more than zero!");
 
-		HttpRequest.getData(`https://dog.ceo/api/breed/hound/images/random/${amountCard}`)
-			.then(({ message }) => {
-				slider.prepend(getCardsList(message, 'pets', true))
+		HttpRequest.getData(`https://api.thecatapi.com/v1/images/search?limit=${amountCard}&breed_ids=beng`)
+			.then(data => {
+				const newData = Promise.all(data.map(({ id }) => {
+					const data = HttpRequest.getData(`https://api.thecatapi.com/v1/images/${id}`)
+					return data
+				}))
+				return newData
+			})
+			.then(data => {
+				console.log(data)
+				slider.prepend(getCardsList(data, 'pets', true))
 				initSliders()
 			})
 			.catch(error => {
@@ -38,7 +46,8 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 	const wrapper = document.createElement('div')
 	wrapper.className = bemClass ? `${bemClass}__wrapper swiper-wrapper` : 'swiper-wrapper'
 
-	images.forEach(image => {
+
+	images.forEach(({ id, url }) => {
 		const article = document.createElement('article')
 		article.className = "pets__card card-pet"
 
@@ -46,7 +55,7 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 		imgWrap.className = 'card-pet__img --loading'
 
 		const img = document.createElement('img')
-		img.src = image
+		img.src = url
 		img.alt = 'pet'
 		img.loading = 'lazy'
 		img.onload = () => {
@@ -71,6 +80,7 @@ function getCardsList(images, bemClass, isCardInSlider = false) {
 		button.className = 'card-pet__more button button--border'
 		button.textContent = 'Learn more'
 		button.setAttribute('data-modal-link', '#popup')
+		button.setAttribute('data-image-id', id)
 		button.setAttribute('aria-label', 'Open a modal window')
 		contentBody.append(button)
 		article.append(contentBody)

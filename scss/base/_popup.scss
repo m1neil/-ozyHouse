@@ -10,6 +10,15 @@
 	align-items: center;
 	padding: toRem(65) toRem(20);
 	z-index: 50;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.4s,
+		visibility 0.4s;
+	.--modal-open & {
+		opacity: 1;
+		visibility: visible;
+	}
 	// .popup__content
 	&__content {
 	}

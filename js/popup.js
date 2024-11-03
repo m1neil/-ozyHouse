@@ -12,10 +12,11 @@ function openModal(e) {
 		return
 	const wrapperCard = target.closest('.card-pet')
 	if (wrapperCard) return
-	const img = wrapperCard.querySelector('img')
 
 }
 
 function setImageModal(src, alt) {
+	console.log(src)
+	console.log(alt)
 
 }

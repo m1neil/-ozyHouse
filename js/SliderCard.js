@@ -125,14 +125,16 @@ export class SliderCard {
 			field.className = 'swiper-field'
 			field.style.gap = `${this.Gap}rem`
 			for (let iSlide = 0; iSlide < this.AmountSlide; iSlide++, indexChild++) {
-				if (this.children[indexChild] === slideField)
+				if (slideField && this.children[indexChild] === slideField)
 					this.currentSlide = indexField
 				if (this.children[indexChild])
 					field.append(this.children[indexChild])
 				else break
 			}
+
 			this.wrapper.append(field)
 		}
+
 	}
 
 	init() {
@@ -140,7 +142,6 @@ export class SliderCard {
 
 		this.children = wrapper.querySelectorAll('.swiper-slide')
 		this.amountChildren = this.children.length
-
 		this.amountField = this.calcAmountField()
 		const widthWrapper = this.amountField * 100
 		wrapper.style.width = `${widthWrapper}%`

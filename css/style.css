@@ -366,6 +366,14 @@ body {
           align-items: center;
   padding: 4.0625rem 1.25rem;
   z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.4s, visibility 0.4s;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.--modal-open .popup {
+  opacity: 1;
+  visibility: visible;
 }
 .content-popup {
   position: relative;
