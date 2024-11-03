@@ -1,7 +1,7 @@
 'use strict'
 import { initMenu } from './menu.js'
 import { initFixedHeader } from './fixed-header.js'
-import { initSliders } from './sliders.js'
+import { initGalaxySlider } from './sliders.js'
 import { HttpRequest } from './HttpRequest.js'
 import { initPhoneNumber } from './phoneNumber.js'
 import { initGoto } from './functions.js'
@@ -15,33 +15,32 @@ function windowLoaded() {
 	initPhoneNumber()
 	initGoto()
 	initPopup()
-	const slider = document.querySelector('.pets__slider')
-	if (slider) {
-		let amountCard = slider.hasAttribute('data-amount') ?
-			parseInt(slider.getAttribute('data-amount')) : 3
+	insertCard('.pets__slider', 'pets', true)
+}
 
-		if (isNaN(amountCard) || amountCard <= 0)
-			throw new RangeError("The number should be more than zero!");
+async function insertCard(selectorContainer, bemClass, isInsetInSlider = false) {
+	const container = document.querySelector(selectorContainer)
+	if (!container) return
 
-		HttpRequest.getData(`https://api.thecatapi.com/v1/images/search?limit=${amountCard}&has_breeds=1&breed_ids=beng,abys`)
-			.then(data => {
-				const newData = Promise.all(data.map(({ id }) => {
-					const data = HttpRequest.getData(`https://api.thecatapi.com/v1/images/${id}`)
-					return data
-				}))
-				return newData
-			})
-			.then(data => {
-				const spinner = document.querySelector('.spinner')
-				if (spinner) spinner.remove()
-				console.log(data)
-				slider.prepend(getCardsList(data, 'pets', true))
-				initSliders()
-			})
-			.catch(error => {
-				console.debug(error.message)
-				alert(`Reload the page! Click F5 on your keyboard.`)
-			})
+	let amountCard = container.hasAttribute('data-amount') ?
+		parseInt(container.getAttribute('data-amount')) : 3
+
+	if (isNaN(amountCard) || amountCard <= 0)
+		throw new RangeError("The number should be more than zero!")
+
+	try {
+		let data = await HttpRequest.getData(`https://api.thecatapi.com/v1/images/search?limit=${amountCard}&has_breeds=1&breed_ids=beng,abys`)
+		data = await Promise.all(data.map(({ id }) =>
+			HttpRequest.getData(`https://api.thecatapi.com/v1/images/${id}`)
+		))
+
+		const spinner = container.querySelector('.spinner')
+		if (spinner) spinner.remove()
+		container.prepend(getCardsList(data, bemClass, isInsetInSlider))
+		if (isInsetInSlider) initGalaxySlider()
+	} catch (error) {
+		console.debug(error.message)
+		alert(`Reload the page! Click F5 on your keyboard.`)
 	}
 }
 

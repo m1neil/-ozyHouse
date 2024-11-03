@@ -10,6 +10,7 @@ export function initPopup() {
 }
 
 let isAnimatingPopup = false
+const durationAnimation = 300
 
 async function openModal(e) {
 	if (isAnimatingPopup) return
@@ -45,7 +46,7 @@ async function openModal(e) {
 	isAnimatingPopup = true
 	setTimeout(() => {
 		isAnimatingPopup = false
-	}, 400);
+	}, durationAnimation);
 }
 
 function setDataInPopup({ url, breeds }, popup) {
@@ -98,13 +99,13 @@ function closePopup(popup, isHideBlackout = true) {
 	document.documentElement.classList.remove('popup-open')
 	document.removeEventListener('click', closePopupByTrigger)
 	document.removeEventListener('keydown', closePopupByTrigger)
-	unBlockBody(400)
 	isAnimatingPopup = true
+	unBlockBody(durationAnimation)
 	setTimeout(() => {
-		isAnimatingPopup = false
 		togglePaddingFixedElement()
 		document.body.style.removeProperty('padding-right')
-	}, 400);
+		isAnimatingPopup = false
+	}, durationAnimation);
 }
 
 function closePopupByTrigger(event) {

@@ -13,8 +13,9 @@
 	opacity: 0;
 	visibility: hidden;
 	transition:
-		opacity 0.4s,
-		visibility 0.4s;
+		opacity 0.3s,
+		visibility 0.3s;
+	perspective: toRem(1200);
 	overflow-y: auto;
 	.popup-open & {
 		opacity: 1;
@@ -29,11 +30,16 @@
 }
 .content-popup {
 	position: relative;
+	transform: rotateX(25deg) translateY(-20%);
 	max-width: toRem(730);
 	border-radius: toRem(9);
 	background-color: #fafafa;
 	padding: toRem(50) toRem(20) toRem(50) toRem(20);
 	margin-inline: toRem(35);
+	transition: transform 0.3s;
+	.popup-open & {
+		transform: rotateX(0) translateY(0);
+	}
 	@media (min-width: toEm(621)) {
 		column-gap: toRem(30);
 		display: flex;

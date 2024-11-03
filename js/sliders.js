@@ -1,6 +1,6 @@
 import { SliderCard } from "./SliderCard.js"
 
-export function initSliders() {
+export function initGalaxySlider() {
 	const sliderMedia = new Map()
 	sliderMedia.set(1150, {
 		gap: 40,
