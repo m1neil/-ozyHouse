@@ -29,6 +29,10 @@ body {
 	}
 }
 
+.page--pt {
+	padding-top: var(--header-height);
+}
+
 // Мінімальна ширина сторінки
 $minWidth: 320;
 // Ширина полотна (макету)
@@ -62,3 +66,4 @@ $mobileSmall: toEm(479.98);
 @import "header";
 @import "footer";
 @import "home";
+@import "pets";

@@ -42,14 +42,14 @@
 			<main class="page">
 				<section class="promo">
 					<div class="promo__container">
-						<div class="promo__content">
+						<div data-goto-parent class="promo__content">
 							<h1 class="promo__title title title--main title--col-white">Not only people need a house</h1>
 							<div class="promo__text text text--col-gray">
 								<p>
 									We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!
 								</p>
 							</div>
-							<a href="#" class="promo__link button">Make a friend</a>
+							<a data-goto=".footer" href="#" class="promo__link button">Make a friend</a>
 						</div>
 						<div class="promo__img">
 							<img src="img/start-screen.webp" alt="puppy">
@@ -79,15 +79,12 @@
 						</div>
 					</div>
 				</section>
-				<section class="pets">
+				<section id="pets" class="pets">
 					<div class="pets__container">
 						<h2 class="pets__title title title--center title--mb">
 							Our friends who are looking for a house
 						</h2>
-						<div data-modal-parent data-amount="9" class="pets__slider swiper">
-							<div class="spinner">
-								<img src="img/spinner.svg" aria-hidden="true" alt="Spinner loading...">
-							</div>
+						<div data-modal-parent data-amount="10" class="pets__slider swiper">
 							<div class="swiper-buttons">
 								<button aria-label="go to prev slide" type="button" class="swiper-button-prev">
 									<img src="img/icons/arrow-slide.svg" alt="Image">
@@ -97,10 +94,10 @@
 								</button>
 							</div>
 						</div>
-						<a href="#" class="pets__link button">Get to know the rest</a>
+						<a href="pets.html" class="pets__link button">Get to know the rest</a>
 					</div>
 				</section>
-				<section class="our-shelter">
+				<section id="shelter" class="our-shelter">
 					<div class="our-shelter__container">
 						<h2 class="our-shelter__title title title--center title--mb">How you can help our shelter</h2>
 						<div class="our-shelter__items">

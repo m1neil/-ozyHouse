@@ -142,10 +142,10 @@
 			background-color 0.4s,
 			outline-color 0.4s;
 		outline: toRem(2) solid transparent;
-		outline-offset: toRem(5);
+		outline-offset: toRem(3);
 		&:focus-visible,
 		&:focus {
-			outline-color: orange;
+			outline-color: #f1cdb3;
 		}
 		img {
 			width: toRem(12);

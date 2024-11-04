@@ -16,9 +16,16 @@
 			background-color 0.4s,
 			backdrop-filter 0.4s;
 	}
-	&.--fixed::before {
-		background-color: rgba(84, 71, 65, 0.6);
-		backdrop-filter: blur(toRem(10));
+	&.--fixed {
+		&::before {
+			background-color: rgba(84, 71, 65, 0.6);
+			backdrop-filter: blur(toRem(10));
+		}
+	}
+	&--bg-gray.--fixed {
+		&::before {
+			background-color: rgba(211, 211, 211, 0.6);
+		}
 	}
 
 	// .header__container
@@ -52,6 +59,9 @@
 			&:hover {
 				opacity: 0.8;
 			}
+			.header--bg-gray &:hover {
+				opacity: 0.6;
+			}
 		}
 	}
 	// .header__sub-logo
@@ -60,6 +70,9 @@
 		font-size: toRem(13);
 		letter-spacing: toRem(1.3);
 		color: #fff;
+		.header--bg-gray & {
+			color: #292929;
+		}
 	}
 	// .header__menu
 	&__menu {
@@ -82,6 +95,9 @@
 			transition:
 				right 0.4s,
 				opacity 0.4s;
+			.header--bg-gray & {
+				background-color: #d3d3d3;
+			}
 			@media (min-height: toEm(541)) {
 				display: grid;
 				align-items: center;
@@ -100,6 +116,9 @@
 				transition:
 					right 0.4s,
 					opacity 0.4s;
+				.header--bg-gray & {
+					background-color: #d3d3d3;
+				}
 			}
 			.menu-open & {
 				opacity: 1;
@@ -141,9 +160,16 @@
 	// .menu__link
 	&__link {
 		position: relative;
-		color: var(--color-light-s, #fafafa);
+		color: $colorGray;
 		font-family: $fontSecond;
 		line-height: 1.6;
+		transition: color 0.4s;
+		.header--bg-gray & {
+			color: #545454;
+		}
+		.--fixed:not(.header--bg-gray) & {
+			color: #fff;
+		}
 		&::before {
 			content: "";
 			position: absolute;
@@ -154,13 +180,20 @@
 			background-color: #f1cdb3;
 			border-radius: toRem(5);
 			transition: width 0.4s;
+			.header--bg-gray & {
+				background-color: $mainColor;
+			}
 		}
 		@media (any-hover: hover) {
 			&:hover {
+				color: #fafafa;
 				&::before {
 					right: auto;
 					left: 0;
 					width: 100%;
+				}
+				.header--bg-gray & {
+					color: #292929;
 				}
 			}
 		}
@@ -199,6 +232,9 @@
 			height: toRem(2);
 			border-radius: toRem(5);
 			background-color: #f1cdb3;
+			.header--bg-gray & {
+				background-color: #000000;
+			}
 		}
 
 		&::before {

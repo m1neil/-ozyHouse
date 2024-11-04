@@ -12,4 +12,10 @@ export class HttpRequest {
 
 		return await response.json()
 	}
+
+	static async transformData(data, url) {
+		return await Promise.all(data.map(({ id }) =>
+			this.getData(`${url}/${id}`)
+		))
+	}
 }
