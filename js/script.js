@@ -6,7 +6,7 @@ import { HttpRequest } from './HttpRequest.js'
 import { initPhoneNumber } from './phoneNumber.js'
 import { initGoto, createSpinner, createPetCard } from './functions.js'
 import { initPopup } from './popup.js'
-import { PaginationCards } from './PaginationCards.js'
+import { initPagination } from './PaginationCards.js'
 
 window.addEventListener('load', windowLoaded)
 
@@ -15,10 +15,7 @@ function windowLoaded() {
 	initFixedHeader()
 	initPhoneNumber()
 	insertCard('.pets__slider', 'pets', true)
-	if (document.querySelector('.our-friends__container')) {
-		const pagination = new PaginationCards('https://api.thecatapi.com/v1/images/search?order=ASC&has_breeds=1&breed_ids=beng,abys', 10, 1, 20, '.our-friends')
-		pagination.render('.our-friends__container')
-	}
+	initPagination()
 	initGoto()
 	initPopup()
 }
