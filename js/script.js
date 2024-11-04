@@ -13,10 +13,14 @@ window.addEventListener('load', windowLoaded)
 function windowLoaded() {
 	initMenu(400)
 	initFixedHeader()
-	initPhoneNumber()
-	insertCard('.pets__slider', 'pets', true)
-	initPagination()
-	initGoto()
+	try {
+		initPhoneNumber()
+		insertCard('.pets__slider', 'pets', true)
+		initPagination()
+		initGoto()
+	} catch (error) {
+		console.error(error.message)
+	}
 	initPopup()
 }
 

@@ -166,8 +166,7 @@ export class PaginationCards {
 }
 
 export function initPagination() {
-	if (document.querySelector('.our-friends__container')) {
-		const pagination = new PaginationCards('https://api.thecatapi.com/v1/images/search?order=ASC&has_breeds=1&breed_ids=beng,abys', 10, 1, 20, '.our-friends')
-		pagination.render('.our-friends__container')
-	}
+	if (!document.querySelector('.our-friends__container')) return
+	const pagination = new PaginationCards('https://api.thecatapi.com/v1/images/search?order=ASC&has_breeds=1&breed_ids=beng,abys', 10, 1, 20, '.our-friends')
+	pagination.render('.our-friends__container')
 }

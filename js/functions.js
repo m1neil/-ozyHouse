@@ -22,10 +22,7 @@ export function initGoto() {
 		parent.addEventListener('click', scrollToBlock)
 	})
 	const hash = location.hash
-	if (hash) {
-		moveScroll(hash)
-		location.hash = ''
-	}
+	if (hash) moveScroll(hash)
 }
 
 function scrollToBlock(e) {

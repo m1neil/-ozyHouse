@@ -23,8 +23,8 @@ async function openModal(e) {
 	if (!currentPopup) return
 
 	const imageId = button.getAttribute('data-image-id')
-	const data = await HttpRequest.getData(`https://api.thecatapi.com/v1/images/${imageId}`)
 	try {
+		const data = await HttpRequest.getData(`https://api.thecatapi.com/v1/images/${imageId}`)
 		setDataInPopup(data, currentPopup)
 	} catch (error) {
 		console.error(error.message)
